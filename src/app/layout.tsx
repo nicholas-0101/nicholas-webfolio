@@ -26,11 +26,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://vercel.live" />
       </head>
-      <body className={`${playfair.className} ${bebas.className}`}>
+      <body className={`${playfair.className} ${bebas.className}`} suppressHydrationWarning>
         {children}
       </body>
     </html>
