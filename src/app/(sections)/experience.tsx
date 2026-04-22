@@ -42,82 +42,100 @@ function ExperienceSection() {
   const { ref, isVisible } = useScrollReveal(0.1);
 
   return (
-    <section
-      id="experience"
-      className="min-h-screen flex flex-col justify-center"
+    <div
+      className="relative bg-[#0a0a0a] py-16 md:py-24 lg:py-28 grain"
       ref={ref}
     >
-      <div className="flex flex-col-reverse lg:flex-row gap-8 w-full">
-        {/* Left: Timeline */}
-        <div className="flex flex-col flex-2/3 gap-0 relative">
-          {/* Vertical timeline line */}
-          <div className="absolute left-[7px] top-4 bottom-4 w-[2px] bg-black/10 hidden lg:block" />
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
+          {/* Left: Timeline */}
+          <div className="flex-[2] flex flex-col relative order-2 lg:order-1">
+            {/* Vertical timeline line */}
+            <div className="absolute left-[7px] top-4 bottom-4 w-[2px] bg-white/5 hidden lg:block" />
 
-          {experience.map((val, i) => (
+            {experience.map((val, i) => (
+              <div
+                key={val.id}
+                className={`relative pl-0 lg:pl-12 py-8 border-t border-white/5 first:border-t-0 ${
+                  isVisible
+                    ? `animate-fade-in-up delay-${(i + 2) * 100}`
+                    : "opacity-0"
+                }`}
+              >
+                {/* Timeline dot — orange */}
+                <div className="absolute left-0 top-10 w-4 h-4 rounded-full bg-[#FF4D00] border-[3px] border-[#0a0a0a] hidden lg:block" />
+
+                <span className="inline-block text-[#FF4D00] text-xs tracking-[0.2em] uppercase mb-2 px-3 py-1 rounded-full border border-[#FF4D00]/20 bg-[#FF4D00]/5">
+                  {val.year}
+                </span>
+                <h3
+                  className="text-white text-xl md:text-2xl tracking-wider mb-4 mt-2"
+                  style={{
+                    fontFamily:
+                      "var(--font-bebas), 'Bebas Neue', sans-serif",
+                  }}
+                >
+                  {val.jobTitle}
+                </h3>
+                <ul className="space-y-2.5">
+                  {val.bullets.map((bullet, j) => (
+                    <li
+                      key={j}
+                      className="text-[#b0b0b0] text-sm md:text-base leading-relaxed flex gap-3"
+                    >
+                      <span className="text-[#FF4D00]/50 mt-[6px] flex-shrink-0 text-[8px]">
+                        ●
+                      </span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* Right: Title + Quote */}
+          <div className="flex-1 flex flex-col gap-6 order-1 lg:order-2 lg:sticky lg:top-32 lg:self-start">
             <div
-              key={val.id}
-              className={`
-                relative pl-0 lg:pl-10 py-6
-                border-t border-black/10 first:border-t-0
-                ${isVisible ? `animate-fade-in-up delay-${(i + 2) * 100}` : "opacity-0"}
-              `}
+              className={`flex items-center gap-3 mb-2 ${
+                isVisible ? "animate-fade-in-up" : "opacity-0"
+              }`}
             >
-              {/* Timeline dot */}
-              <div className="absolute left-0 top-8 w-4 h-4 rounded-full bg-black border-[3px] border-[#e4e4e0] hidden lg:block" />
-
-              <p className="text-[#b0aeaa] text-[13px] font-sans tracking-widest mb-1">
-                {val.year}
-              </p>
-              <h2 className="text-[22px] font-sans mb-3">{val.jobTitle}</h2>
-              <ul className="space-y-2">
-                {val.bullets.map((bullet, j) => (
-                  <li
-                    key={j}
-                    className="text-[16px] text-[#5e5c5c] leading-relaxed flex gap-3"
-                  >
-                    <span className="text-black/40 mt-[2px] flex-shrink-0 text-[10px]">
-                      ●
-                    </span>
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
+              <span className="w-2 h-2 rounded-full bg-[#FF4D00]" />
+              <span className="text-[#FF4D00] text-sm tracking-[0.3em] uppercase">
+                Experiences
+              </span>
             </div>
-          ))}
-        </div>
 
-        {/* Right: Title + Quote */}
-        <div className="flex flex-col flex-1/3 justify-center gap-6 text-center lg:text-right pt-10">
-          <p
-            className={`text-[#5e5c5c] text-sm font-sans tracking-[0.3em] uppercase ${
-              isVisible ? "animate-fade-in-up" : "opacity-0"
-            }`}
-          >
-            04 — Experience
-          </p>
-          <h1
-            className={`text-[42px] font-sans ${
-              isVisible ? "animate-fade-in-up delay-100" : "opacity-0"
-            }`}
-          >
-            MY EXPERIENCE
-          </h1>
-          <div
-            className={`${
-              isVisible ? "animate-fade-in-up delay-200" : "opacity-0"
-            }`}
-          >
-            <blockquote className="text-[18px] italic text-[#3b3b3b] leading-relaxed">
-              &ldquo;Information is not knowledge. The only source of knowledge
-              is experience. You need experience to gain wisdom.&rdquo;
-            </blockquote>
-            <p className="text-[14px] text-[#5e5c5c] mt-2">
-              — Albert Einstein
-            </p>
+            <h2
+              className={`text-white text-4xl sm:text-5xl md:text-6xl leading-[0.95] tracking-tight ${
+                isVisible ? "animate-fade-in-up delay-100" : "opacity-0"
+              }`}
+              style={{
+                fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+              }}
+            >
+              MY EXPERIENCES
+            </h2>
+
+            <div
+              className={`mt-4 ${
+                isVisible ? "animate-fade-in-up delay-200" : "opacity-0"
+              }`}
+            >
+              <blockquote className="text-[#b0b0b0] text-base md:text-lg italic leading-relaxed border-l-2 border-[#FF4D00]/40 pl-6">
+                &ldquo;Information is not knowledge. The only source of
+                knowledge is experience. You need experience to gain
+                wisdom.&rdquo;
+              </blockquote>
+              <p className="text-[#666] text-sm mt-3 pl-6">
+                — Albert Einstein
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

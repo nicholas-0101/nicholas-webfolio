@@ -58,58 +58,74 @@ function TestimonialSection() {
   const { ref, isVisible } = useScrollReveal(0.1);
 
   return (
-    <section
-      id="testimonial"
-      className="min-h-screen flex flex-col justify-center"
+    <div
+      className="relative bg-[#0a0a0a] py-16 md:py-24 lg:py-28 grain"
       ref={ref}
     >
-      <p
-        className={`text-[#5e5c5c] text-sm font-sans tracking-[0.3em] uppercase mb-4 text-center lg:text-left ${
-          isVisible ? "animate-fade-in-up" : "opacity-0"
-        }`}
-      >
-        03 — Testimonials
-      </p>
-      <h1
-        className={`text-[42px] font-sans text-center lg:text-left mb-10 ${
-          isVisible ? "animate-fade-in-up delay-100" : "opacity-0"
-        }`}
-      >
-        TRUSTED BY
-      </h1>
-
-      <div className="flex flex-col sm:flex-row flex-wrap gap-6 w-full">
-        {testimony.map((val, i) => (
+      <div className="px-8 md:px-12 lg:px-16">
+        {/* Section header */}
+        <div className="mb-16 md:mb-20">
           <div
-            key={val.id}
-            className={`
-              group flex-1 min-w-[280px] p-6
-              border-l-2 border-black/20 hover:border-black
-              bg-black/[0.02] hover:bg-black/[0.04]
-              transition-all duration-300
-              ${isVisible ? `animate-fade-in-up delay-${Math.min((i + 1) * 100, 700)}` : "opacity-0"}
-            `}
+            className={`flex items-center gap-3 mb-6 ${
+              isVisible ? "animate-fade-in-up" : "opacity-0"
+            }`}
           >
-            {/* Quote mark */}
-            <span className="text-[48px] leading-none text-black/10 font-serif select-none block -mb-4">
-              &ldquo;
+            <span className="w-2 h-2 rounded-full bg-[#FF4D00]" />
+            <span className="text-[#FF4D00] text-sm tracking-[0.3em] uppercase">
+              Testimonials
             </span>
-
-            <p className="text-[16px] text-[#5e5c5c] leading-relaxed">
-              {val.testimony}
-            </p>
-
-            {/* Name and position — tighter spacing to testimony */}
-            <div className="mt-4 pt-3 border-t border-black/5">
-              <h2 className="text-[16px] font-sans leading-tight">
-                {val.name}
-              </h2>
-              <p className="text-[13px] text-[#5e5c5c] mt-0.5">{val.jobTitle}</p>
-            </div>
           </div>
-        ))}
+
+          <h2
+            className={`text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight ${
+              isVisible ? "animate-fade-in-up delay-100" : "opacity-0"
+            }`}
+            style={{
+              fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+            }}
+          >
+            TRUSTED BY
+          </h2>
+        </div>
+
+        {/* Testimonial grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {testimony.map((val, i) => (
+            <div
+              key={val.id}
+              className={`group relative bg-[#111111] rounded-2xl p-8 border border-white/5 hover:border-[#FF4D00]/20 transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,77,0,0.05)] ${
+                isVisible
+                  ? `animate-fade-in-up delay-${Math.min((i + 1) * 100, 700)}`
+                  : "opacity-0"
+              }`}
+            >
+              {/* Orange quote mark */}
+              <span className="text-[#FF4D00] text-6xl leading-none font-serif select-none block -mb-2 opacity-60">
+                &ldquo;
+              </span>
+
+              <p className="text-[#b0b0b0] text-sm md:text-base leading-relaxed mb-8">
+                {val.testimony}
+              </p>
+
+              {/* Author */}
+              <div className="mt-auto pt-4 border-t border-white/5">
+                <p
+                  className="text-white text-base tracking-wider"
+                  style={{
+                    fontFamily:
+                      "var(--font-bebas), 'Bebas Neue', sans-serif",
+                  }}
+                >
+                  {val.name}
+                </p>
+                <p className="text-[#666] text-xs mt-0.5">{val.jobTitle}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </section>
+    </div>
   );
 }
 

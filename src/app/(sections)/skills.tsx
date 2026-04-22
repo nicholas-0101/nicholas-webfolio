@@ -1,100 +1,237 @@
 "use client";
 
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { Code2, Server, Palette, PenTool } from "lucide-react";
+import { tagIcons } from "@/data/tagIcons";
 
-const skills = [
+
+const skillCards = [
   {
-    id: 1,
-    skillName: "JAVASCRIPT",
-    skillDesc:
-      "is a programming language and core technology of the World Wide Web, alongside HTML and CSS.",
+    icon: Code2,
+    title: "Frontend",
+    description: "Interfaces that feel fast and look sharp",
+    color: "#FF4D00",
+    tags: [
+      "React",
+      "Next.js",
+      "TypeScript",
+      "JavaScript",
+      "Tailwind CSS",
+      "HTML & CSS",
+      "NPM",
+      "Responsive Design",
+    ],
   },
   {
-    id: 2,
-    skillName: "TYPESCRIPT",
-    skillDesc:
-      "is a high-level programming language that adds static typing with optional type annotations to JavaScript.",
+    icon: Server,
+    title: "Backend",
+    description: "APIs and systems that handle real traffic",
+    color: "#FF4D00",
+    tags: [
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "Supabase",
+      "Prisma",
+      "REST API",
+      "Backendless",
+    ],
   },
   {
-    id: 3,
-    skillName: "CSS",
-    skillDesc:
-      "is a style sheet language used for specifying the presentation and styling of a document written in a markup language such as HTML.",
+    icon: Palette,
+    title: "UI/UX Design",
+    description: "Research-driven design, not guesswork",
+    color: "#FF4D00",
+    tags: [
+      "Figma",
+      "Miro",
+      "UX Research",
+      "UI Design",
+      "Prototyping",
+      "Design System",
+      "Wireframing",
+      "Responsive Design",
+      "User Testing",
+    ],
   },
   {
-    id: 4,
-    skillName: "HTML",
-    skillDesc:
-      "is the standard markup language for documents designed to be displayed in a web browser.",
-  },
-  {
-    id: 5,
-    skillName: "NODE.JS",
-    skillDesc:
-      "is a cross-platform, open-source JavaScript runtime environment that can run on Windows, Linux, Unix, macOS, and more.",
-  },
-  {
-    id: 6,
-    skillName: "REACT",
-    skillDesc:
-      "is a free and open-source front-end JavaScript library that aims to make building user interfaces based on components more 'seamless'.",
+    icon: PenTool,
+    title: "Graphic Design",
+    description: "Visual storytelling that leaves an impression",
+    color: "#FF4D00",
+    tags: [
+      "Adobe Photoshop",
+      "Adobe Illustrator",
+      "Figma",
+      "Affinity",
+      "Canva",
+      "Layout & Composition",
+      "Color & Typography",
+      "Branding",
+      "Marketing & Advertising",
+    ],
   },
 ];
 
+// Collect all unique tags for the marquee
+const allTags = [...new Set(skillCards.flatMap((card) => card.tags))];
+
 function SkillsSection() {
-  const { ref, isVisible } = useScrollReveal(0.1);
+  const { ref, isVisible } = useScrollReveal(0.05);
 
   return (
-    <section
-      id="skills"
-      className="min-h-screen flex flex-col justify-center"
-      ref={ref}
-    >
-      <div className="flex flex-col lg:flex-row gap-8 w-full">
-        {/* Left: Section title */}
-        <div className="lg:w-1/4 pt-10">
+    <div className="relative bg-[#0a0a0a] py-16 md:py-24 lg:py-28 grain" ref={ref}>
+      <div className="px-8 md:px-12 lg:px-16">
+        {/* Section header — two-column */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 pb-16 md:pb-20">
+          <div>
+            <div
+              className={`flex items-center gap-3 pb-6 ${
+                isVisible ? "animate-fade-in-up" : "opacity-0"
+              }`}
+            >
+              <span className="w-2 h-2 rounded-full bg-[#FF4D00]" />
+              <span className="text-[#FF4D00] text-sm tracking-[0.3em] uppercase">
+                Skills
+              </span>
+            </div>
+            <h2
+              className={`text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95] tracking-tight ${
+                isVisible ? "animate-fade-in-up delay-100" : "opacity-0"
+              }`}
+              style={{
+                fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+              }}
+            >
+              WHAT I DO
+            </h2>
+          </div>
           <p
-            className={`text-[#5e5c5c] text-sm font-sans tracking-[0.3em] uppercase mb-4 text-center lg:text-left ${
-              isVisible ? "animate-fade-in-up" : "opacity-0"
+            className={`text-[#666] text-sm md:text-base max-w-sm leading-relaxed lg:text-right ${
+              isVisible ? "animate-fade-in-up delay-200" : "opacity-0"
             }`}
           >
-            02 — Skills
+            Building end-to-end digital products — from design to deployment.
           </p>
-          <h1
-            className={`text-[42px] font-sans text-center lg:text-left ${
-              isVisible ? "animate-fade-in-up delay-100" : "opacity-0"
-            }`}
-          >
-            MY SKILLS
-          </h1>
         </div>
 
-        {/* Right: Skill cards */}
-        <div className="flex flex-col sm:flex-row flex-wrap gap-0 w-full lg:w-3/4">
-          {skills.map((skill, i) => (
-            <div
-              key={skill.id}
-              className={`
-                group p-6 flex flex-col gap-2 flex-1 min-w-[250px]
-                border-t border-black/10
-                hover:bg-black/[0.02] transition-all duration-300
-                ${isVisible ? `animate-fade-in-up delay-${(i + 1) * 100}` : "opacity-0"}
-              `}
-            >
-              <span className="text-[#b0aeaa] text-[13px] font-sans tracking-widest">
-                {String(skill.id).padStart(2, "0")}
-              </span>
-              <h2 className="text-[24px] font-sans group-hover:tracking-wider transition-all duration-300">
-                {skill.skillName}
-              </h2>
-              <p className="text-[16px] text-[#5e5c5c] leading-relaxed">
-                {skill.skillDesc}
-              </p>
+        {/* Skills cards grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {skillCards.map((card, i) => {
+            const CardIcon = card.icon;
+            return (
+              <div
+                key={card.title}
+                className={`group relative flex flex-col rounded-2xl border border-white/[0.06] bg-[#111111] p-6 md:p-7 transition-all duration-500 hover:border-white/[0.12] hover:bg-[#141414] ${
+                  isVisible
+                    ? `animate-fade-in-up delay-${Math.min((i + 2) * 100, 500)}`
+                    : "opacity-0"
+                }`}
+              >
+                {/* Subtle glow on hover */}
+                <div
+                  className="absolute inset-0 rounded-2xl opacity-0 border border-[#FF4D00]/40 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    background: `radial-gradient(circle at 30% 20%, ${card.color}08 0%, transparent 90%)`,
+                  }}
+                />
+
+                {/* Icon */}
+                <div
+                  className="relative z-10 w-13 h-13 rounded-xl flex items-center justify-center mb-7 transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(255,77,0,0.4)]"
+                  style={{
+                    background: `${card.color}15`,
+                    border: `1px solid ${card.color}25`,
+                  }}
+                >
+                  <CardIcon className="w-5 h-5 transition-all duration-500 group-hover:drop-shadow-[0_0_8px_rgba(255,77,0,0.8)]" style={{ color: card.color }} />
+                </div>
+
+                {/* Title */}
+                <h3
+                  className="relative z-10 text-white text-lg md:text-xl tracking-wide"
+                  style={{
+                    fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+                  }}
+                >
+                  {card.title}
+                </h3>
+
+                {/* Description */}
+                <p className="relative z-10 text-[#666] text-xs md:text-sm pb-3 leading-relaxed">
+                  {card.description}
+                </p>
+
+                {/* Tags */}
+                <div className="relative z-10 flex flex-wrap gap-1.5">
+                  {card.tags.map((tag) => {
+                    const tagInfo = tagIcons[tag];
+                    const TagIcon = tagInfo?.icon;
+                    return (
+                      <span
+                        key={tag}
+                        className="inline-flex items-center gap-1.5 text-[#999] text-[11px] px-2.5 py-1 rounded-md border border-white/[0.06] bg-white/[0.02] transition-all duration-300 cursor-default hover:text-white hover:border-[#FF4D00]/20 hover:bg-[#FF4D00]/[0.06] hover:shadow-[0_0_12px_rgba(255,77,0,0.15)]"
+                      >
+                        {TagIcon && (
+                          <TagIcon
+                            className="w-3 h-3 flex-shrink-0"
+                            style={{ color: tagInfo.color }}
+                          />
+                        )}
+                        {tag}
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Scrolling tag marquee */}
+        <div className={`mt-16 md:mt-20 overflow-hidden ${isVisible ? "animate-fade-in-up delay-600" : "opacity-0"}`}>
+          {/* Fade edges */}
+          <div className="relative">
+            <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+
+            {/* Row 1 — scrolls left */}
+            <div className="flex gap-3 mb-3" style={{ animation: "marqueeLeft 30s linear infinite", width: "max-content" }}>
+              {[...allTags.slice(0, Math.ceil(allTags.length / 2)), ...allTags.slice(0, Math.ceil(allTags.length / 2))].map((tag, i) => {
+                const tagInfo = tagIcons[tag];
+                const TagIcon = tagInfo?.icon;
+                return (
+                  <span
+                    key={`r1-${i}`}
+                    className="inline-flex items-center gap-2 text-[#999] text-sm px-5 py-3 rounded-full border border-white/[0.06] bg-white/[0.02] whitespace-nowrap hover:text-white hover:border-[#FF4D00]/20 hover:bg-[#FF4D00]/[0.06] transition-all duration-300"
+                  >
+                    {TagIcon && <TagIcon className="w-3.5 h-3.5 flex-shrink-0" style={{ color: tagInfo.color }} />}
+                    {tag}
+                  </span>
+                );
+              })}
             </div>
-          ))}
+
+            {/* Row 2 — scrolls right */}
+            <div className="flex gap-3" style={{ animation: "marqueeRight 35s linear infinite", width: "max-content" }}>
+              {[...allTags.slice(Math.ceil(allTags.length / 2)), ...allTags.slice(Math.ceil(allTags.length / 2))].map((tag, i) => {
+                const tagInfo = tagIcons[tag];
+                const TagIcon = tagInfo?.icon;
+                return (
+                  <span
+                    key={`r2-${i}`}
+                    className="inline-flex items-center gap-2 text-[#999] text-sm px-5 py-3 rounded-full border border-white/[0.06] bg-white/[0.02] whitespace-nowrap hover:text-white hover:border-[#FF4D00]/20 hover:bg-[#FF4D00]/[0.06] transition-all duration-300"
+                  >
+                    {TagIcon && <TagIcon className="w-3.5 h-3.5 flex-shrink-0" style={{ color: tagInfo.color }} />}
+                    {tag}
+                  </span>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 

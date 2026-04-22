@@ -15,11 +15,6 @@ export function useScrollReveal(threshold = 0.1) {
     const el = ref.current;
     if (!el) return;
 
-    // Find the scroll container
-    const scrollContainer = document.querySelector(
-      ".overflow-y-auto"
-    ) as HTMLElement | null;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -28,9 +23,9 @@ export function useScrollReveal(threshold = 0.1) {
         }
       },
       {
-        root: scrollContainer,
+        root: null, // use the viewport
         threshold,
-        rootMargin: "0px 0px -50px 0px",
+        rootMargin: "0px 0px -60px 0px",
       }
     );
 
