@@ -19,9 +19,12 @@ const bebas = Bebas_Neue({
 import CursorTrail from "@/components/CursorTrail";
 
 export const metadata: Metadata = {
-  title: "Nicholas — Frontend Web Developer",
+  title: "Nicholas' Portfolio",
   description:
-    "Personal portfolio of Nicholas, a frontend web developer crafting impactful websites and memorable digital journeys.",
+    "Personal portfolio of Nicholas, who turns complexity into elegant solutions.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
