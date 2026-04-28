@@ -6,10 +6,7 @@ function AboutSection() {
   const { ref, isVisible } = useScrollReveal(0.1);
 
   return (
-    <div
-      className="relative py-16 md:py-24 lg:py-28 grain"
-      ref={ref}
-    >
+    <div className="relative py-16 md:py-24 lg:py-28 grain" ref={ref}>
       <div className="px-8 md:px-12 lg:px-16">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
           {/* Left: Profile picture (circle) */}
@@ -27,7 +24,9 @@ function AboutSection() {
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   onError={(e) => {
                     (e.target as HTMLImageElement).style.display = "none";
-                    (e.target as HTMLImageElement).nextElementSibling?.classList.remove("hidden");
+                    (
+                      e.target as HTMLImageElement
+                    ).nextElementSibling?.classList.remove("hidden");
                   }}
                 />
                 <div className="hidden absolute inset-0 flex flex-col items-center justify-center text-[#333]">
@@ -45,7 +44,9 @@ function AboutSection() {
                       d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
                     />
                   </svg>
-                  <span className="text-xs tracking-[0.2em] uppercase">Your Photo</span>
+                  <span className="text-xs tracking-[0.2em] uppercase">
+                    Your Photo
+                  </span>
                 </div>
               </div>
             </div>
@@ -88,36 +89,35 @@ function AboutSection() {
             />
 
             <p
-              className={`text-[#b0b0b0] text-base md:text-lg leading-relaxed ${
+              className={`text-[#b0b0b0] max-w-3xl text-base md:text-lg leading-relaxed ${
                 isVisible ? "animate-fade-in-up delay-200" : "opacity-0"
               }`}
             >
-              Hey, I&apos;m Nicholas, a web developer with a passion for
-              blending clean code with captivating design. My journey into web
-              development began with a fascination for how things work on the
-              web, which quickly turned into a full-time pursuit. With hands-on
-              experience across personal, freelance, and collaborative projects,
-              I&apos;ve developed a strong foundation in both front-end and
-              back-end development, but I more focused on front-end development.
+              Hey, I&apos;m Nicholas, a multidisciplinary Product Designer and
+              Developer with 3+ years of experience in graphic design and a
+              growing focus on full-stack web development and UI/UX. My journey
+              started with a deep passion for visual communication, which
+              naturally evolved into building complete digital products that
+              balance strong aesthetics with clean, functional code. I&apos;ve
+              worked across personal and collaborative projects, and what drives
+              me most is the space where design and development meet.
             </p>
 
             <p
-              className={`text-[#666] text-sm md:text-base leading-relaxed ${
+              className={`text-[#666] max-w-3xl text-sm md:text-base leading-relaxed ${
                 isVisible ? "animate-fade-in-up delay-300" : "opacity-0"
               }`}
             >
-              I specialize in building modern, responsive websites using
-              technologies like JavaScript, React, and Node.js — always with an
-              eye for performance and user experience. I enjoy turning complex
-              problems into elegant, functional solutions that not only work
-              seamlessly but feel intuitive for the end user. At the core of my
-              work are values that guide every project I take on: timeliness,
-              attention to detail, and clear communication with clients. I
-              believe that good code is only part of the story — great
-              collaboration and reliability make the process smooth and
-              successful. Whether it&apos;s crafting something from scratch or
-              improving what&apos;s already there, let&apos;s create something
-              remarkable — together.
+              I specialize in crafting modern, responsive web experiences using
+              technologies like Next.js, TypeScript, and Tailwind CSS, while
+              bringing a designer&apos;s eye to every interface I build. Beyond
+              the technical side, I care deeply about creating products that
+              feel intuitive and purposeful for the people using them, turning
+              complex problems into seamless, user-centered solutions. Whether
+              it&apos;s building from scratch, redesigning what exists, or
+              bridging a gap between a brand and its digital presence, I show up
+              with attention to detail, clear communication, and a genuine
+              commitment to making things both work well and look great.
             </p>
           </div>
         </div>

@@ -1,42 +1,7 @@
 "use client";
 
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-
-const experience = [
-  {
-    id: 1,
-    jobTitle: "Full-Stack Web Developer — Freelance",
-    year: "2022 - Present",
-    bullets: [
-      "Designed and developed responsive web applications using React, and Node.js.",
-      "Worked with clients to transform business needs into functional, scalable digital solutions.",
-      "Built RESTful APIs and integrated third-party services (e.g., payment gateways, CMS, analytics).",
-      "Handled full project lifecycles from wireframing to deployment and post-launch optimization.",
-    ],
-  },
-  {
-    id: 2,
-    jobTitle: "Front-End Developer — PixelForge Studio",
-    year: "2021 - 2022",
-    bullets: [
-      "Developed modern UI components using React, TypeScript, and Tailwind CSS.",
-      "Collaborated with UI/UX designers to turn prototypes into clean, accessible interfaces.",
-      "Optimized website performance, SEO structure, and mobile responsiveness.",
-      "Maintained version control and code reviews using Git and GitHub in Agile teams.",
-    ],
-  },
-  {
-    id: 3,
-    jobTitle: "Web Development Intern — NovaTech Solutions",
-    year: "2020 - 2021",
-    bullets: [
-      "Assisted in building internal tools with HTML, CSS, and JavaScript.",
-      "Gained experience in backend development using Node.js and Express.",
-      "Participated in daily standups, code reviews, and sprint planning.",
-      "Learned best practices in writing maintainable code and debugging.",
-    ],
-  },
-];
+import { experience } from "@/data/experience";
 
 function ExperienceSection() {
   const { ref, isVisible } = useScrollReveal(0.1);
@@ -65,19 +30,39 @@ function ExperienceSection() {
                 {/* Timeline dot — orange */}
                 <div className="absolute left-0 top-10 w-4 h-4 rounded-full bg-[#FF4D00] border-[3px] border-[#0a0a0a] hidden lg:block" />
 
-                <span className="inline-block text-[#FF4D00] text-xs tracking-[0.2em] uppercase mb-2 px-3 py-1 rounded-full border border-[#FF4D00]/20 bg-[#FF4D00]/5">
-                  {val.year}
-                </span>
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <span className="inline-block text-[#FF4D00] text-xs tracking-[0.2em] uppercase px-3 py-1 rounded-full border border-[#FF4D00]/20 bg-[#FF4D00]/5">
+                    {val.year}
+                  </span>
+                  <span className="text-[#666] text-xs uppercase tracking-widest px-2 py-1 border border-white/10 rounded-full">
+                    {val.type}
+                  </span>
+                </div>
+
                 <h3
-                  className="text-white text-xl md:text-2xl tracking-wider mb-4 mt-2"
+                  className="text-white text-2xl md:text-3xl tracking-wider mb-1"
                   style={{
-                    fontFamily:
-                      "var(--font-bebas), 'Bebas Neue', sans-serif",
+                    fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
                   }}
                 >
                   {val.jobTitle}
                 </h3>
-                <ul className="space-y-2.5">
+
+                <div className="flex flex-wrap items-center gap-2 mb-4">
+                  <div className="text-[#FF4D00] text-sm md:text-base font-medium mb-1">
+                    {val.company}
+                  </div>
+                  <span className="text-[#666] text-xs md:text-sm font-bold">·</span>
+                  <div className="text-[#666] text-xs md:text-sm font-medium">
+                    {val.location}
+                  </div>
+                </div>
+
+                <p className="text-[#b0b0b0] text-sm md:text-base leading-relaxed mb-6 max-w-2xl">
+                  {val.description}
+                </p>
+
+                <ul className="space-y-2 mb-8">
                   {val.bullets.map((bullet, j) => (
                     <li
                       key={j}
@@ -90,6 +75,17 @@ function ExperienceSection() {
                     </li>
                   ))}
                 </ul>
+
+                <div className="flex flex-wrap gap-2">
+                  {val.tags.map((tag, k) => (
+                    <span
+                      key={k}
+                      className="text-[#666] text-[10px] md:text-xs px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/5"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             ))}
           </div>
@@ -128,9 +124,7 @@ function ExperienceSection() {
                 knowledge is experience. You need experience to gain
                 wisdom.&rdquo;
               </blockquote>
-              <p className="text-[#666] text-sm mt-3 pl-6">
-                — Albert Einstein
-              </p>
+              <p className="text-[#666] text-sm mt-3 pl-6">— Albert Einstein</p>
             </div>
           </div>
         </div>

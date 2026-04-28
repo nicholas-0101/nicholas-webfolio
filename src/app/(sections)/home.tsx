@@ -12,7 +12,7 @@ const roles = [
 ];
 
 const stats = [
-  { value: 1, suffix: "+", label: "Years Experience" },
+  { value: 3, suffix: "+", label: "Years Experience" },
   { value: 15, suffix: "+", label: "Technologies Mastered" },
   { value: 10, suffix: "+", label: "Projects Delivered" },
 ];
@@ -264,7 +264,7 @@ function HomeSection() {
                 <ArrowDownRight className="w-4 h-4 text-[#FF4D00] group-hover:translate-x-1 group-hover:translate-y-1 transition-transform duration-300" />
               </button>
               <a
-                href="/Nicholas_CV.pdf"
+                href="/CV-Nicholas.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link-underline text-white text-sm md:text-base uppercase tracking-[0.2em] flex items-center gap-2 group cursor-pointer"

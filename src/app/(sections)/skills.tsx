@@ -1,9 +1,8 @@
 "use client";
 
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { Code2, Server, Palette, PenTool } from "lucide-react";
+import { Code2, Server, Palette, PenTool, Settings } from "lucide-react";
 import { tagIcons } from "@/data/tagIcons";
-
 
 const skillCards = [
   {
@@ -17,7 +16,11 @@ const skillCards = [
       "TypeScript",
       "JavaScript",
       "Tailwind CSS",
-      "HTML & CSS",
+      "CSS",
+      "Framer Motion",
+      "Zustand",
+      "Formik",
+      "Axios",
       "NPM",
       "Responsive Design",
     ],
@@ -30,9 +33,12 @@ const skillCards = [
     tags: [
       "Node.js",
       "Express.js",
+      "Prisma",
       "PostgreSQL",
       "Supabase",
-      "Prisma",
+      "Cloudinary",
+      "Git & GitHub",
+      "Vercel",
       "REST API",
       "Backendless",
     ],
@@ -45,6 +51,7 @@ const skillCards = [
     tags: [
       "Figma",
       "Miro",
+      "Jira",
       "UX Research",
       "UI Design",
       "Prototyping",
@@ -80,7 +87,10 @@ function SkillsSection() {
   const { ref, isVisible } = useScrollReveal(0.05);
 
   return (
-    <div className="relative bg-[#0a0a0a] py-16 md:py-24 lg:py-28 grain" ref={ref}>
+    <div
+      className="relative bg-[#0a0a0a] py-16 md:py-24 lg:py-28 grain"
+      ref={ref}
+    >
       <div className="px-8 md:px-12 lg:px-16">
         {/* Section header — two-column */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 pb-16 md:pb-20">
@@ -144,7 +154,10 @@ function SkillsSection() {
                     border: `1px solid ${card.color}25`,
                   }}
                 >
-                  <CardIcon className="w-5 h-5 transition-all duration-500 group-hover:drop-shadow-[0_0_8px_rgba(255,77,0,0.8)]" style={{ color: card.color }} />
+                  <CardIcon
+                    className="w-5 h-5 transition-all duration-500 group-hover:drop-shadow-[0_0_8px_rgba(255,77,0,0.8)]"
+                    style={{ color: card.color }}
+                  />
                 </div>
 
                 {/* Title */}
@@ -189,15 +202,26 @@ function SkillsSection() {
         </div>
 
         {/* Scrolling tag marquee */}
-        <div className={`mt-16 md:mt-20 overflow-hidden ${isVisible ? "animate-fade-in-up delay-600" : "opacity-0"}`}>
+        <div
+          className={`mt-16 md:mt-20 overflow-hidden ${isVisible ? "animate-fade-in-up delay-600" : "opacity-0"}`}
+        >
           {/* Fade edges */}
           <div className="relative">
             <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
             <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
 
             {/* Row 1 — scrolls left */}
-            <div className="flex gap-3 mb-3" style={{ animation: "marqueeLeft 30s linear infinite", width: "max-content" }}>
-              {[...allTags.slice(0, Math.ceil(allTags.length / 2)), ...allTags.slice(0, Math.ceil(allTags.length / 2))].map((tag, i) => {
+            <div
+              className="flex gap-3 mb-3"
+              style={{
+                animation: "marqueeLeft 30s linear infinite",
+                width: "max-content",
+              }}
+            >
+              {[
+                ...allTags.slice(0, Math.ceil(allTags.length / 2)),
+                ...allTags.slice(0, Math.ceil(allTags.length / 2)),
+              ].map((tag, i) => {
                 const tagInfo = tagIcons[tag];
                 const TagIcon = tagInfo?.icon;
                 return (
@@ -205,7 +229,12 @@ function SkillsSection() {
                     key={`r1-${i}`}
                     className="inline-flex items-center gap-2 text-[#999] text-sm px-5 py-3 rounded-full border border-white/[0.06] bg-white/[0.02] whitespace-nowrap hover:text-white hover:border-[#FF4D00]/20 hover:bg-[#FF4D00]/[0.06] transition-all duration-300"
                   >
-                    {TagIcon && <TagIcon className="w-3.5 h-3.5 flex-shrink-0" style={{ color: tagInfo.color }} />}
+                    {TagIcon && (
+                      <TagIcon
+                        className="w-3.5 h-3.5 flex-shrink-0"
+                        style={{ color: tagInfo.color }}
+                      />
+                    )}
                     {tag}
                   </span>
                 );
@@ -213,8 +242,17 @@ function SkillsSection() {
             </div>
 
             {/* Row 2 — scrolls right */}
-            <div className="flex gap-3" style={{ animation: "marqueeRight 35s linear infinite", width: "max-content" }}>
-              {[...allTags.slice(Math.ceil(allTags.length / 2)), ...allTags.slice(Math.ceil(allTags.length / 2))].map((tag, i) => {
+            <div
+              className="flex gap-3"
+              style={{
+                animation: "marqueeRight 35s linear infinite",
+                width: "max-content",
+              }}
+            >
+              {[
+                ...allTags.slice(Math.ceil(allTags.length / 2)),
+                ...allTags.slice(Math.ceil(allTags.length / 2)),
+              ].map((tag, i) => {
                 const tagInfo = tagIcons[tag];
                 const TagIcon = tagInfo?.icon;
                 return (
@@ -222,7 +260,12 @@ function SkillsSection() {
                     key={`r2-${i}`}
                     className="inline-flex items-center gap-2 text-[#999] text-sm px-5 py-3 rounded-full border border-white/[0.06] bg-white/[0.02] whitespace-nowrap hover:text-white hover:border-[#FF4D00]/20 hover:bg-[#FF4D00]/[0.06] transition-all duration-300"
                   >
-                    {TagIcon && <TagIcon className="w-3.5 h-3.5 flex-shrink-0" style={{ color: tagInfo.color }} />}
+                    {TagIcon && (
+                      <TagIcon
+                        className="w-3.5 h-3.5 flex-shrink-0"
+                        style={{ color: tagInfo.color }}
+                      />
+                    )}
                     {tag}
                   </span>
                 );

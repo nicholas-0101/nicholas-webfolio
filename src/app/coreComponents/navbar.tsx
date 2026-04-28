@@ -32,7 +32,7 @@ function Navbar() {
           minute: "2-digit",
           second: "2-digit",
           hour12: false,
-        })
+        }),
       );
     };
     updateTime();
@@ -100,15 +100,13 @@ function Navbar() {
         }
       }, 450);
     },
-    [closeMenu, pathname, router]
+    [closeMenu, pathname, router],
   );
 
   return (
     <>
       {/* ── Fixed Top Bar ── */}
-      <nav
-        className="fixed top-0 left-0 w-full z-[200] py-6 pointer-events-none"
-      >
+      <nav className="fixed top-0 left-0 w-full z-[200] py-6 pointer-events-none">
         {/* Backdrop blur — masked to fade out seamlessly */}
         <div
           className="absolute inset-0 -bottom-12 backdrop-blur-md"
@@ -192,7 +190,9 @@ function Navbar() {
 
           {/* Bottom info */}
           <div className="absolute bottom-8 left-0 right-0 px-8 flex justify-between items-end text-[#666] text-xs md:text-sm">
-            <span className="text-[#FF4D00]">{wibTime} <span className="text-[#FF4D00] ml-1">Timezone (GMT +7)</span></span>
+            <span className="text-[#FF4D00]">
+              {wibTime} <span className="text-[#FF4D00] ml-1">(UTC +7)</span>
+            </span>
             <span className="text-[#FF4D00]">
               {new Date().toLocaleDateString("en-US", {
                 weekday: "long",

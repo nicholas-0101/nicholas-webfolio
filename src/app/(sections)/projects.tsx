@@ -53,14 +53,14 @@ function PortofolioSection() {
                 animationDelay: isVisible ? `${Math.min((i + 2) * 100, 500)}ms` : "0ms",
               }}
             >
-              {/* Thumbnail Placeholder */}
+              {/* Project Thumbnail */}
               <div className="relative w-full aspect-video bg-[#1a1a1a] overflow-hidden border-b border-white/5 group-hover:border-[#FF4D00]/30 transition-colors duration-300 ease-in-out">
+                <img
+                  src={project.thumbnail}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
                 <div className="absolute inset-0 bg-gradient-to-br from-[#FF4D00]/5 to-transparent mix-blend-overlay opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-white/10 font-bebas text-3xl md:text-4xl tracking-widest uppercase">
-                    Thumbnail
-                  </span>
-                </div>
               </div>
 
               {/* Card Content */}
@@ -88,12 +88,12 @@ function PortofolioSection() {
                 </h3>
 
                 {/* Description */}
-                <p className="text-[#666] text-sm leading-relaxed mb-6">
+                <p className="text-[#666] text-sm leading-relaxed mb-6 line-clamp-3">
                   {project.description}
                 </p>
 
                 {/* Tech Tags */}
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-1.5 max-h-[52px] overflow-hidden">
                   {project.techs.map((tech) => {
                     const tagInfo = tagIcons[tech];
                     const TagIcon = tagInfo?.icon;
