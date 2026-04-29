@@ -1,6 +1,10 @@
 "use client";
 
-import { useScrollReveal } from "@/hooks/useScrollReveal";
+import {
+  MotionSection,
+  MotionFade,
+  MotionCard,
+} from "@/components/motion/MotionSection";
 
 const testimony = [
   {
@@ -55,77 +59,65 @@ const testimony = [
 ];
 
 function TestimonialSection() {
-  const { ref, isVisible } = useScrollReveal(0.1);
-
   return (
-    <div
-      className="relative bg-[#0a0a0a] py-16 md:py-24 lg:py-28 grain"
-      ref={ref}
-    >
+    <MotionSection className="relative bg-[#0a0a0a] py-16 md:py-24 lg:py-28 grain">
       <div className="px-8 md:px-12 lg:px-16">
         {/* Section header */}
         <div className="mb-16 md:mb-20">
-          <div
-            className={`flex items-center gap-3 mb-6 ${
-              isVisible ? "animate-fade-in-up" : "opacity-0"
-            }`}
-          >
-            <span className="w-2 h-2 rounded-full bg-[#FF4D00]" />
-            <span className="text-[#FF4D00] text-sm tracking-[0.3em] uppercase">
-              Testimonials
-            </span>
-          </div>
+          <MotionFade>
+            <div className="flex items-center gap-3 mb-6">
+              <span className="w-2 h-2 rounded-full bg-[#FF4D00]" />
+              <span className="text-[#FF4D00] text-sm tracking-[0.3em] uppercase">
+                Testimonials
+              </span>
+            </div>
+          </MotionFade>
 
-          <h2
-            className={`text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight ${
-              isVisible ? "animate-fade-in-up delay-100" : "opacity-0"
-            }`}
+          <MotionFade
+            as="h2"
+            delay={0.15}
+            className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight"
             style={{
               fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
             }}
           >
             TRUSTED BY
-          </h2>
+          </MotionFade>
         </div>
 
         {/* Testimonial grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimony.map((val, i) => (
-            <div
-              key={val.id}
-              className={`group relative bg-[#111111] rounded-2xl p-8 border border-white/5 hover:border-[#FF4D00]/20 transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,77,0,0.05)] ${
-                isVisible
-                  ? `animate-fade-in-up delay-${Math.min((i + 1) * 100, 700)}`
-                  : "opacity-0"
-              }`}
-            >
-              {/* Orange quote mark */}
-              <span className="text-[#FF4D00] text-6xl leading-none font-serif select-none block -mb-2 opacity-60">
-                &ldquo;
-              </span>
+            <MotionCard key={val.id} delay={i * 0.12}>
+              <div className="group relative bg-[#111111] rounded-2xl p-8 border border-white/5 hover:border-[#FF4D00]/20 transition-all duration-500 hover:shadow-[0_0_40px_rgba(255,77,0,0.05)] h-full flex flex-col">
+                {/* Orange quote mark */}
+                <span className="text-[#FF4D00] text-6xl leading-none font-serif select-none block -mb-2 opacity-60">
+                  &ldquo;
+                </span>
 
-              <p className="text-[#b0b0b0] text-sm md:text-base leading-relaxed mb-8">
-                {val.testimony}
-              </p>
-
-              {/* Author */}
-              <div className="mt-auto pt-4 border-t border-white/5">
-                <p
-                  className="text-white text-base tracking-wider"
-                  style={{
-                    fontFamily:
-                      "var(--font-bebas), 'Bebas Neue', sans-serif",
-                  }}
-                >
-                  {val.name}
+                <p className="text-[#b0b0b0] text-sm md:text-base leading-relaxed mb-8">
+                  {val.testimony}
                 </p>
-                <p className="text-[#666] text-xs mt-0.5">{val.jobTitle}</p>
+
+                {/* Author */}
+                <div className="mt-auto pt-4 border-t border-white/5">
+                  <p
+                    className="text-white text-base tracking-wider"
+                    style={{
+                      fontFamily:
+                        "var(--font-bebas), 'Bebas Neue', sans-serif",
+                    }}
+                  >
+                    {val.name}
+                  </p>
+                  <p className="text-[#666] text-xs mt-0.5">{val.jobTitle}</p>
+                </div>
               </div>
-            </div>
+            </MotionCard>
           ))}
         </div>
       </div>
-    </div>
+    </MotionSection>
   );
 }
 

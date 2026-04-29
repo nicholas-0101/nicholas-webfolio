@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { useState, useEffect, useCallback } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+
+const smoothEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const navItems = [
   { id: "home", label: "Home" },
@@ -56,11 +59,7 @@ function Navbar() {
   }, [menuOpen]);
 
   const closeMenu = useCallback(() => {
-    setClosing(true);
-    setTimeout(() => {
-      setMenuOpen(false);
-      setClosing(false);
-    }, 400);
+    setMenuOpen(false);
   }, []);
 
   useEffect(() => {
@@ -98,7 +97,7 @@ function Navbar() {
             history.replaceState(null, "", window.location.pathname);
           }
         }
-      }, 450);
+      }, 400); // Trigger scroll earlier while menu is still sliding out
     },
     [closeMenu, pathname, router],
   );
@@ -165,45 +164,71 @@ function Navbar() {
       </nav>
 
       {/* ── Full-Screen Overlay Menu ── */}
-      {(menuOpen || closing) && (
-        <div
-          className={`fixed inset-0 z-[190] bg-[#0b0b0b]/90 backdrop-blur-sm flex flex-col justify-center items-center ${
-            closing ? "menu-close" : "menu-open"
-          }`}
-        >
-          {/* Nav Links */}
-          <div className="flex flex-col items-center gap-2 md:gap-4">
-            {navItems.map((item, i) => (
-              <button
-                key={item.id}
-                onClick={() => handleNavClick(item.id)}
-                className="text-white text-4xl md:text-6xl lg:text-7xl tracking-wider hover:text-[#FF4D00] transition-colors duration-300 cursor-pointer"
-                style={{
-                  fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
-                  animationDelay: `${i * 60}ms`,
-                }}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ clipPath: "inset(0 0 100% 0)", opacity: 0 }}
+            animate={{ clipPath: "inset(0 0 0% 0)", opacity: 1 }}
+            exit={{ clipPath: "inset(0 0 100% 0)", opacity: 0 }}
+            transition={{ duration: 0.6, ease: smoothEase }}
+            className="fixed inset-0 z-[190] bg-[#0b0b0b]/95 backdrop-blur-md flex flex-col justify-center items-center overflow-hidden"
+          >
+            {/* Nav Links */}
+            <div className="flex flex-col items-center gap-2 md:gap-4">
+              {navItems.map((item, i) => (
+                <motion.button
+                  key={item.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: 0.2 + i * 0.08,
+                    duration: 0.6,
+                    ease: smoothEase,
+                  }}
+                  onClick={() => handleNavClick(item.id)}
+                  className="text-white text-4xl md:text-6xl lg:text-7xl tracking-wider hover:text-[#FF4D00] transition-colors duration-300 cursor-pointer"
+                  style={{
+                    fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
+                  }}
+                >
+                  {item.label}
+                </motion.button>
+              ))}
+            </div>
 
-          {/* Bottom info */}
-          <div className="absolute bottom-8 left-0 right-0 px-8 flex justify-between items-end text-[#666] text-xs md:text-sm">
-            <span className="text-[#FF4D00]">
-              {wibTime} <span className="text-[#FF4D00] ml-1">(UTC +7)</span>
-            </span>
-            <span className="text-[#FF4D00]">
-              {new Date().toLocaleDateString("en-US", {
-                weekday: "long",
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </span>
-          </div>
-        </div>
-      )}
+            {/* Bottom info */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+              className="absolute bottom-12 md:bottom-8 left-0 right-0 px-8 flex flex-col md:flex-row justify-center md:justify-between items-center md:items-end gap-4 md:gap-0 text-xs md:text-sm"
+            >
+              <div className="flex flex-col items-center md:items-start">
+                <span className="text-[#FF4D00] font-mono tracking-wider">
+                  {wibTime} <span className="opacity-50 ml-1">WIB</span>
+                </span>
+                <span className="text-[#444] text-[10px] uppercase tracking-[0.2em] mt-1">
+                  Local Time (UTC +7)
+                </span>
+              </div>
+              
+              <div className="flex flex-col items-center md:items-end">
+                <span className="text-[#FF4D00] tracking-widest uppercase">
+                  {new Date().toLocaleDateString("en-US", {
+                    weekday: "long",
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </span>
+                <span className="text-[#444] text-[10px] uppercase tracking-[0.2em] mt-1">
+                  Current Date
+                </span>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

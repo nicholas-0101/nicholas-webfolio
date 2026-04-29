@@ -8,8 +8,11 @@
   --font-display: "Bebas Neue", sans-serif;
 }
 
+html {
+  /* Scroll behavior is handled via JavaScript in Navbar and ScrollToTop components */
+}
+
 * {
-  scroll-behavior: smooth;
   box-sizing: border-box;
 }
 

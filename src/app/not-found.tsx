@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { MotionSection, MotionFade } from "@/components/motion/MotionSection";
 
 export default function NotFound() {
   return (
@@ -29,53 +32,66 @@ export default function NotFound() {
       />
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-6">
+      <MotionSection className="relative z-10 flex flex-col items-center text-center px-6">
         {/* Large 404 */}
-        <h1
+        <MotionFade
+          as="h1"
           className="text-[#FF4D00] text-[150px] sm:text-[200px] md:text-[280px] lg:text-[350px] leading-none tracking-tight select-none"
           style={{
             fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
           }}
         >
           404
-        </h1>
+        </MotionFade>
 
         {/* Subtitle */}
-        <p
+        <MotionFade
+          as="p"
+          delay={0.15}
           className="text-white text-2xl sm:text-3xl md:text-4xl tracking-tight -mt-4 md:-mt-8"
           style={{
             fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
           }}
         >
           PAGE NOT FOUND
-        </p>
+        </MotionFade>
 
         {/* Description */}
-        <p className="text-[#666] text-sm md:text-base max-w-md mt-4 leading-relaxed">
-          The page you&apos;re looking for doesn&apos;t exist or has been moved.
-        </p>
+        <MotionFade delay={0.3}>
+          <p className="text-[#666] text-sm md:text-base max-w-md mt-4 leading-relaxed">
+            The page you&apos;re looking for doesn&apos;t exist or has been moved.
+          </p>
+        </MotionFade>
 
         {/* Divider */}
-        <div className="w-12 h-px bg-white/10 mt-8 mb-8" />
+        <MotionFade delay={0.45}>
+          <div className="w-12 h-px bg-white/10 mt-8 mb-8" />
+        </MotionFade>
 
         {/* Back home button */}
-        <Link
-          href="/"
-          className="group flex items-center gap-3 text-white text-sm uppercase tracking-[0.2em] hover:text-[#FF4D00] transition-colors duration-300"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
+        <MotionFade delay={0.6}>
+          <Link
+            href="/"
+            className="group flex items-center gap-3 text-white text-sm uppercase tracking-[0.2em] hover:text-[#FF4D00] transition-colors duration-300"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 12H5m7-7l-7 7 7 7" />
-          </svg>
-          Back to Home
-        </Link>
-      </div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-300"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M19 12H5m7-7l-7 7 7 7"
+              />
+            </svg>
+            Back to Home
+          </Link>
+        </MotionFade>
+      </MotionSection>
     </div>
   );
 }

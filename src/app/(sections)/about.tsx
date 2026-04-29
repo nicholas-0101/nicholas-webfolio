@@ -1,75 +1,52 @@
 "use client";
 
-import { useScrollReveal } from "@/hooks/useScrollReveal";
+import {
+  MotionSection,
+  MotionFade,
+  MotionSlide,
+} from "@/components/motion/MotionSection";
 
 function AboutSection() {
-  const { ref, isVisible } = useScrollReveal(0.1);
-
   return (
-    <div className="relative py-16 md:py-24 lg:py-28 grain" ref={ref}>
+    <MotionSection className="relative py-16 md:py-24 lg:py-28 grain">
       <div className="px-8 md:px-12 lg:px-16">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
           {/* Left: Profile picture (circle) */}
-          <div
-            className={`shrink-0 self-center lg:self-start ${
-              isVisible ? "animate-fade-in-up" : "opacity-0"
-            }`}
+          <MotionSlide
+            direction="left"
+            className="shrink-0 self-center lg:self-start"
           >
             <div className="relative group">
               <div className="absolute -inset-[2px] rounded-full bg-gradient-to-br from-[#FF4D00]/50 via-[#FF4D00]/15 to-transparent" />
               <div className="relative w-[200px] h-[200px] md:w-[240px] md:h-[240px] lg:w-[260px] lg:h-[260px] xl:w-[280px] xl:h-[280px] rounded-full overflow-hidden bg-[#111]">
                 <img
-                  src="/profile-placeholder.jpg"
+                  src="/images/profile-pic.png"
                   alt="Nicholas — Fullstack Developer"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = "none";
-                    (
-                      e.target as HTMLImageElement
-                    ).nextElementSibling?.classList.remove("hidden");
-                  }}
                 />
-                <div className="hidden absolute inset-0 flex flex-col items-center justify-center text-[#333]">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-14 h-14 mb-2"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    strokeWidth={0.8}
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
-                    />
-                  </svg>
-                  <span className="text-xs tracking-[0.2em] uppercase">
-                    Your Photo
-                  </span>
-                </div>
+                
+                {/* Subtle gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/40 via-transparent to-transparent opacity-40" />
               </div>
             </div>
-          </div>
+          </MotionSlide>
 
           {/* Right: About title + description */}
           <div className="flex-1 flex flex-col gap-8">
             {/* Section label */}
-            <div
-              className={`flex items-center gap-3 ${
-                isVisible ? "animate-fade-in-up" : "opacity-0"
-              }`}
-            >
-              <span className="w-2 h-2 rounded-full bg-[#FF4D00]" />
-              <span className="text-[#FF4D00] text-sm tracking-[0.3em] uppercase">
-                About
-              </span>
-            </div>
+            <MotionFade>
+              <div className="flex items-center gap-3">
+                <span className="w-2 h-2 rounded-full bg-[#FF4D00]" />
+                <span className="text-[#FF4D00] text-sm tracking-[0.3em] uppercase">
+                  About
+                </span>
+              </div>
+            </MotionFade>
 
-            <h2
-              className={`text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-tight ${
-                isVisible ? "animate-fade-in-up delay-100" : "opacity-0"
-              }`}
+            <MotionFade
+              as="h2"
+              delay={0.15}
+              className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-tight"
               style={{
                 fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
               }}
@@ -79,19 +56,17 @@ function AboutSection() {
               WEBSITES & MEMORABLE
               <br />
               <span className="text-[#FF4D00]">DIGITAL JOURNEYS</span>
-            </h2>
+            </MotionFade>
 
             {/* Orange accent line */}
-            <div
-              className={`w-20 h-[2px] bg-[#FF4D00] ${
-                isVisible ? "animate-fade-in-up delay-200" : "opacity-0"
-              }`}
-            />
+            <MotionFade delay={0.3}>
+              <div className="w-20 h-[2px] bg-[#FF4D00]" />
+            </MotionFade>
 
-            <p
-              className={`text-[#b0b0b0] max-w-3xl text-base md:text-lg leading-relaxed ${
-                isVisible ? "animate-fade-in-up delay-200" : "opacity-0"
-              }`}
+            <MotionFade
+              as="p"
+              delay={0.35}
+              className="text-[#b0b0b0] max-w-4xl text-base md:text-lg leading-relaxed"
             >
               Hey, I&apos;m Nicholas, a multidisciplinary Product Designer and
               Developer with 3+ years of experience in graphic design and a
@@ -101,12 +76,12 @@ function AboutSection() {
               balance strong aesthetics with clean, functional code. I&apos;ve
               worked across personal and collaborative projects, and what drives
               me most is the space where design and development meet.
-            </p>
+            </MotionFade>
 
-            <p
-              className={`text-[#666] max-w-3xl text-sm md:text-base leading-relaxed ${
-                isVisible ? "animate-fade-in-up delay-300" : "opacity-0"
-              }`}
+            <MotionFade
+              as="p"
+              delay={0.5}
+              className="text-[#666] max-w-4xl text-sm md:text-base leading-relaxed"
             >
               I specialize in crafting modern, responsive web experiences using
               technologies like Next.js, TypeScript, and Tailwind CSS, while
@@ -118,11 +93,11 @@ function AboutSection() {
               bridging a gap between a brand and its digital presence, I show up
               with attention to detail, clear communication, and a genuine
               commitment to making things both work well and look great.
-            </p>
+            </MotionFade>
           </div>
         </div>
       </div>
-    </div>
+    </MotionSection>
   );
 }
 

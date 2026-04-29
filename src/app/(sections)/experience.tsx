@@ -1,16 +1,16 @@
 "use client";
 
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { experience } from "@/data/experience";
+import {
+  MotionSection,
+  MotionFade,
+  MotionCard,
+  MotionSlide,
+} from "@/components/motion/MotionSection";
 
 function ExperienceSection() {
-  const { ref, isVisible } = useScrollReveal(0.1);
-
   return (
-    <div
-      className="relative bg-[#0a0a0a] py-16 md:py-24 lg:py-28 grain"
-      ref={ref}
-    >
+    <MotionSection className="relative bg-[#0a0a0a] py-16 md:py-24 lg:py-28 grain">
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
           {/* Left: Timeline */}
@@ -19,13 +19,10 @@ function ExperienceSection() {
             <div className="absolute left-[7px] top-4 bottom-4 w-[2px] bg-white/5 hidden lg:block" />
 
             {experience.map((val, i) => (
-              <div
+              <MotionCard
                 key={val.id}
-                className={`relative pl-0 lg:pl-12 py-8 border-t border-white/5 first:border-t-0 ${
-                  isVisible
-                    ? `animate-fade-in-up delay-${(i + 2) * 100}`
-                    : "opacity-0"
-                }`}
+                delay={i * 0.2}
+                className="relative pl-0 lg:pl-12 py-8 border-t border-white/5 first:border-t-0"
               >
                 {/* Timeline dot — orange */}
                 <div className="absolute left-0 top-10 w-4 h-4 rounded-full bg-[#FF4D00] border-[3px] border-[#0a0a0a] hidden lg:block" />
@@ -86,50 +83,44 @@ function ExperienceSection() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </MotionCard>
             ))}
           </div>
 
           {/* Right: Title + Quote */}
           <div className="flex-1 flex flex-col gap-6 order-1 lg:order-2 lg:sticky lg:top-32 lg:self-start">
-            <div
-              className={`flex items-center gap-3 mb-2 ${
-                isVisible ? "animate-fade-in-up" : "opacity-0"
-              }`}
-            >
-              <span className="w-2 h-2 rounded-full bg-[#FF4D00]" />
-              <span className="text-[#FF4D00] text-sm tracking-[0.3em] uppercase">
-                Experiences
-              </span>
-            </div>
+            <MotionFade>
+              <div className="flex items-center gap-3 mb-2">
+                <span className="w-2 h-2 rounded-full bg-[#FF4D00]" />
+                <span className="text-[#FF4D00] text-sm tracking-[0.3em] uppercase">
+                  Experiences
+                </span>
+              </div>
+            </MotionFade>
 
-            <h2
-              className={`text-white text-4xl sm:text-5xl md:text-6xl leading-[0.95] tracking-tight ${
-                isVisible ? "animate-fade-in-up delay-100" : "opacity-0"
-              }`}
+            <MotionFade
+              as="h2"
+              delay={0.15}
+              className="text-white text-4xl sm:text-5xl md:text-6xl leading-[0.95] tracking-tight"
               style={{
                 fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif",
               }}
             >
               MY EXPERIENCES
-            </h2>
+            </MotionFade>
 
-            <div
-              className={`mt-4 ${
-                isVisible ? "animate-fade-in-up delay-200" : "opacity-0"
-              }`}
-            >
-              <blockquote className="text-[#b0b0b0] text-base md:text-lg italic leading-relaxed border-l-2 border-[#FF4D00]/40 pl-6">
+            <MotionFade delay={0.3}>
+              <blockquote className="text-[#b0b0b0] text-base md:text-lg italic leading-relaxed border-l-2 border-[#FF4D00]/40 pl-6 mt-4">
                 &ldquo;Information is not knowledge. The only source of
                 knowledge is experience. You need experience to gain
                 wisdom.&rdquo;
               </blockquote>
               <p className="text-[#666] text-sm mt-3 pl-6">— Albert Einstein</p>
-            </div>
+            </MotionFade>
           </div>
         </div>
       </div>
-    </div>
+    </MotionSection>
   );
 }
 

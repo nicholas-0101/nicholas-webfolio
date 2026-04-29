@@ -95,9 +95,10 @@ export const projects: Project[] = [
       "Event organizers had no dedicated platform to create, promote, and manage ticketed events, while attendees had to rely on fragmented tools with no unified browsing or transaction flow. As part of a team project, I was responsible for Feature 1, covering event discovery, creation, promotion, and transactions. I built the landing page with event browsing, category and location filters, and a debounced search bar, along with event creation for organizers with support for free and paid tickets, limited-time vouchers, and seat management. I also implemented the full transaction flow including payment proof upload, a 2-hour countdown timer, automatic status changes, seat restoration on cancellation, and point usage at checkout. The result is TicketNest, a production-deployed event management platform where organizers can manage events end-to-end and attendees can browse, register, and pay seamlessly.",
     thumbnail: "/images/projects/thumbnail/ticketnest.png",
     gallery: [
-      "/images/projects/ticketnest-1.png",
-      "/images/projects/ticketnest-2.png",
-      "/images/projects/ticketnest-3.png",
+      "/images/projects/gallery/ticketnest-1.png",
+      "/images/projects/gallery/ticketnest-2.png",
+      "/images/projects/gallery/ticketnest-3.png",
+      "/images/projects/gallery/ticketnest-4.png",
     ],
     categories: ["WEB APP", "FULL-STACK", "PLATFORM"],
     techs: [

@@ -17,6 +17,7 @@ const bebas = Bebas_Neue({
 });
 
 import CursorTrail from "@/components/CursorTrail";
+import LoadingScreen from "@/components/LoadingScreen";
 
 export const metadata: Metadata = {
   title: "Nicholas' Portfolio",
@@ -41,6 +42,7 @@ export default function RootLayout({
         className={`${inter.variable} ${bebas.variable} antialiased`}
         suppressHydrationWarning
       >
+        <LoadingScreen />
         <CursorTrail />
         {children}
       </body>
