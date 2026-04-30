@@ -153,7 +153,7 @@ export default async function ProjectDetail({
                     DESCRIPTION
                   </MotionFade>
                   <MotionFade delay={0.1}>
-                    <p className="text-[#ccc] text-base leading-relaxed max-w-3xl">
+                    <p className="text-[#ccc] text-base leading-relaxed max-w-3xl whitespace-pre-line">
                       {project.description}
                     </p>
                   </MotionFade>
