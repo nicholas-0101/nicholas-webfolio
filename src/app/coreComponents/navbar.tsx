@@ -205,7 +205,7 @@ function Navbar() {
             >
               <div className="flex flex-col items-center md:items-start">
                 <span className="text-[#FF4D00] font-mono tracking-wider">
-                  {wibTime} <span className="opacity-50 ml-1">WIB</span>
+                  {wibTime} <span className="ml-1">WIB</span>
                 </span>
                 <span className="text-[#444] text-[10px] uppercase tracking-[0.2em] mt-1">
                   Local Time (UTC +7)
