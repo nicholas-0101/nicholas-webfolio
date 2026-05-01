@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { MotionFade, MotionCard } from "@/components/motion/MotionSection";
@@ -112,10 +113,13 @@ export default function ProjectGallery({
                 }}
                 className="relative w-full aspect-[4/3] bg-[#111] cursor-pointer rounded-2xl overflow-hidden border-2 border-white/5 hover:border-[#FF4D00]/70 transition-colors duration-300 group"
               >
-                <img
+                <Image
                   src={image}
                   alt={`${projectTitle} gallery ${index + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  fill
+                  sizes="(max-width: 640px) 100vw, 50vw"
+                  quality={75}
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </button>
             </MotionCard>

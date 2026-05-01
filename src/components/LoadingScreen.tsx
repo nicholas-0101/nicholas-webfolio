@@ -15,7 +15,10 @@ export default function LoadingScreen() {
       setPercent((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
-          setTimeout(() => setLoading(false), 500);
+          setTimeout(() => {
+            setLoading(false);
+            window.dispatchEvent(new Event("loadingComplete"));
+          }, 500);
           return 100;
         }
         const next = prev + Math.floor(Math.random() * 15) + 5;

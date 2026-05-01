@@ -81,6 +81,14 @@ function HomeSection() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
+  const [loadingDone, setLoadingDone] = useState(false);
+
+  // Wait for loading screen to finish before enabling count-up
+  useEffect(() => {
+    const onDone = () => setLoadingDone(true);
+    window.addEventListener("loadingComplete", onDone);
+    return () => window.removeEventListener("loadingComplete", onDone);
+  }, []);
 
   const currentTagline = roles[roleIndex].tagline;
 
@@ -128,6 +136,8 @@ function HomeSection() {
           top: "-10%",
           right: "-5%",
           background: "radial-gradient(circle, #a855f7 70%, transparent 70%)",
+          willChange: "transform",
+          transform: "translateZ(0)",
         }}
       />
       <div
@@ -138,6 +148,8 @@ function HomeSection() {
           top: "5%",
           right: "15%",
           background: "radial-gradient(circle, #FF4D00 70%, transparent 70%)",
+          willChange: "transform",
+          transform: "translateZ(0)",
         }}
       />
       <div
@@ -148,6 +160,8 @@ function HomeSection() {
           top: "35%",
           right: "30%",
           background: "radial-gradient(circle, #ec4899 70%, transparent 70%)",
+          willChange: "transform",
+          transform: "translateZ(0)",
         }}
       />
       <div
@@ -158,6 +172,8 @@ function HomeSection() {
           bottom: "25%",
           left: "10%",
           background: "radial-gradient(circle, #ec4899 70%, transparent 70%)",
+          willChange: "transform",
+          transform: "translateZ(0)",
         }}
       />
       <div
@@ -168,6 +184,8 @@ function HomeSection() {
           bottom: "5%",
           left: "0%",
           background: "radial-gradient(circle, #FF6B2B 70%, transparent 70%)",
+          willChange: "transform",
+          transform: "translateZ(0)",
         }}
       />
 
@@ -296,7 +314,7 @@ function HomeSection() {
               value={stat.value}
               suffix={stat.suffix}
               label={stat.label}
-              isVisible={inView}
+              isVisible={inView && loadingDone}
               delay={0.8 + i * 0.15}
               isLast={i === stats.length - 1}
             />

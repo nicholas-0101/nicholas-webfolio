@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   MotionSection,
   MotionFade,
@@ -17,14 +18,17 @@ function AboutSection() {
             className="shrink-0 self-center lg:self-start"
           >
             <div className="relative group">
-              <div className="absolute -inset-[2px] rounded-full bg-gradient-to-br from-[#FF4D00]/50 via-[#FF4D00]/15 to-transparent" />
+              <div className="absolute -inset-[4px] rounded-full bg-gradient-to-tl from-[#FF4D00] via-[#FF4D00]/50 to-[#FF4D00]/10" />
               <div className="relative w-[200px] h-[200px] md:w-[240px] md:h-[240px] lg:w-[260px] lg:h-[260px] xl:w-[280px] xl:h-[280px] rounded-full overflow-hidden bg-[#111]">
-                <img
+                <Image
                   src="/images/profile-pic.png"
                   alt="Nicholas — Fullstack Developer"
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  fill
+                  sizes="(max-width: 768px) 200px, (max-width: 1024px) 240px, 280px"
+                  quality={80}
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                
+
                 {/* Subtle gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/40 via-transparent to-transparent opacity-40" />
               </div>

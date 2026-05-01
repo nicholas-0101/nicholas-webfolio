@@ -1,5 +1,6 @@
 import { projects } from "@/data/projects";
 import { tagIcons } from "@/data/tagIcons";
+import Image from "next/image";
 import Navbar from "@/app/coreComponents/navbar";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, ArrowLeft } from "lucide-react";
@@ -61,10 +62,14 @@ export default async function ProjectDetail({
           {/* Project Thumbnail */}
           <MotionFade delay={0.2}>
             <div className="relative w-full aspect-video bg-[#111] rounded-3xl overflow-hidden border border-white/5 hover:border-[#FF4D00]/50 transition-all duration-500 mb-16 md:mb-24 shadow-[0_20px_50px_-20px_rgba(255,77,0,0.1)]">
-              <img
+              <Image
                 src={project.thumbnail}
                 alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 80vw, 1200px"
+                quality={80}
+                priority
+                className="object-cover transition-transform duration-700 hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-br from-[#FF4D00]/10 to-transparent mix-blend-overlay pointer-events-none" />
             </div>
@@ -241,10 +246,13 @@ export default async function ProjectDetail({
                           >
                             {/* Project Thumbnail */}
                             <div className="relative w-full aspect-video bg-[#1a1a1a] overflow-hidden border-b border-white/5 group-hover:border-[#FF4D00]/30 transition-colors duration-300 ease-in-out">
-                              <img
+                              <Image
                                 src={op.thumbnail}
                                 alt={op.title}
-                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                fill
+                                sizes="(max-width: 1024px) 100vw, 400px"
+                                quality={70}
+                                className="object-cover transition-transform duration-500 group-hover:scale-110"
                               />
                               <div className="absolute inset-0 bg-gradient-to-br from-[#FF4D00]/5 to-transparent mix-blend-overlay opacity-0 group-hover:opacity-50 transition-opacity duration-300 ease-in-out" />
                             </div>
