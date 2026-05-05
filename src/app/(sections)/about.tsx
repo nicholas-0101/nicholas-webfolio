@@ -24,6 +24,7 @@ function AboutSection() {
                   src="/images/profile-pic.png"
                   alt="Nicholas — Fullstack Developer"
                   fill
+                  priority
                   sizes="(max-width: 768px) 200px, (max-width: 1024px) 240px, 280px"
                   quality={80}
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
