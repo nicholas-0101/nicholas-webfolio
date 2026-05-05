@@ -29,20 +29,13 @@ export default function LoadingScreen() {
     return () => clearInterval(interval);
   }, []);
 
-  // Lock body scroll during loading
-  useEffect(() => {
-    if (loading) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [loading]);
-
   return (
-    <AnimatePresence>
+    <AnimatePresence
+      onExitComplete={() => {
+        // Unlock scroll only after the exit animation fully completes
+        document.documentElement.classList.add("loaded");
+      }}
+    >
       {loading && (
         <motion.div
           key="loader"

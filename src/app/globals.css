@@ -9,7 +9,12 @@
 }
 
 html {
-  /* Scroll behavior is handled via JavaScript in Navbar and ScrollToTop components */
+  /* Scroll is locked until loading screen finishes */
+  overflow: hidden;
+}
+
+html.loaded {
+  overflow: auto;
 }
 
 * {
