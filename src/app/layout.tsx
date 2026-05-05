@@ -53,7 +53,7 @@ export const metadata: Metadata = {
       "Multidisciplinary developer and designer who turns complexity into elegant solutions. Specializing in Next.js, TypeScript, and Tailwind CSS.",
     images: [
       {
-        url: "/og-image",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Nicholas Samuel — Fullstack Developer & UI/UX Designer",
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     title: "Nicholas Samuel — Fullstack Developer & UI/UX Designer",
     description:
       "Multidisciplinary developer and designer who turns complexity into elegant solutions.",
-    images: ["/og-image"],
+    images: ["/og-image.jpg"],
     creator: "Nicholas Samuel",
   },
   robots: {
