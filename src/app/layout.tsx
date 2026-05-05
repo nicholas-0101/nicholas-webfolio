@@ -20,11 +20,71 @@ import CursorTrail from "@/components/CursorTrail";
 import LoadingScreen from "@/components/LoadingScreen";
 
 export const metadata: Metadata = {
-  title: "Nicholas' Portfolio",
+  metadataBase: new URL("https://nicholassamuel.vercel.app"),
+  title: {
+    default: "Nicholas Samuel — Fullstack Developer & UI/UX Designer",
+    template: "%s | Nicholas Samuel",
+  },
   description:
-    "Personal portfolio of Nicholas, who turns complexity into elegant solutions.",
+    "Portfolio of Nicholas Samuel — a multidisciplinary Fullstack Developer, UI/UX Designer, and Graphic Designer with 3+ years of experience building modern, responsive web experiences using Next.js, TypeScript, and Tailwind CSS.",
+  keywords: [
+    "Nicholas Samuel",
+    "Fullstack Developer",
+    "UI/UX Designer",
+    "Graphic Designer",
+    "Next.js",
+    "TypeScript",
+    "React",
+    "Tailwind CSS",
+    "Web Developer Indonesia",
+    "Portfolio",
+  ],
+  authors: [
+    { name: "Nicholas Samuel", url: "https://nicholassamuel.vercel.app" },
+  ],
+  creator: "Nicholas Samuel",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://nicholassamuel.vercel.app",
+    siteName: "Nicholas Samuel",
+    title: "Nicholas Samuel — Fullstack Developer & UI/UX Designer",
+    description:
+      "Multidisciplinary developer and designer who turns complexity into elegant solutions. Specializing in Next.js, TypeScript, and Tailwind CSS.",
+    images: [
+      {
+        url: "/images/profile-pic.png",
+        width: 1200,
+        height: 630,
+        alt: "Nicholas Samuel — Fullstack Developer & UI/UX Designer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Nicholas Samuel — Fullstack Developer & UI/UX Designer",
+    description:
+      "Multidisciplinary developer and designer who turns complexity into elegant solutions.",
+    images: ["/images/profile-pic.png"],
+    creator: "@nic.verr",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+  },
+  alternates: {
+    canonical: "https://nicholassamuel.vercel.app",
   },
 };
 
