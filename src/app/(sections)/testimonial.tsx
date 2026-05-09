@@ -61,7 +61,7 @@ const testimony = [
 function TestimonialSection() {
   return (
     <MotionSection className="relative bg-[#0a0a0a] py-16 md:py-24 lg:py-28 grain">
-      <div className="px-8 md:px-12 lg:px-16">
+      <div className="px-8 md:px-24 lg:px-32">
         {/* Section header */}
         <div className="mb-16 md:mb-20">
           <MotionFade>

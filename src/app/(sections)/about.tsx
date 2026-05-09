@@ -10,7 +10,7 @@ import {
 function AboutSection() {
   return (
     <MotionSection className="relative py-16 md:py-24 lg:py-28 grain">
-      <div className="px-8 md:px-12 lg:px-16">
+      <div className="px-8 md:px-24 lg:px-32">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-start">
           {/* Left: Profile picture (circle) */}
           <MotionSlide

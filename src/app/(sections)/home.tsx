@@ -190,7 +190,7 @@ function HomeSection() {
       />
 
       {/* Hero content — two-column layout */}
-      <div className="relative z-10 flex flex-col justify-center px-8 md:px-12 lg:px-16 pt-20 md:pt-24">
+      <div className="relative z-10 flex flex-col justify-center px-8 md:px-24 lg:px-32 pt-20 md:pt-24">
         <div className="flex flex-col lg:flex-row lg:items-end lg:gap-16 xl:gap-24">
           {/* Left column — greeting + name */}
           <div className="lg:flex-1 text-left">
@@ -224,7 +224,7 @@ function HomeSection() {
           <div className="lg:flex-1 mt-8 lg:mt-0">
             {/* Auto-cycling role */}
             <motion.div
-              className="relative h-6 md:h-7 mb-6 overflow-hidden"
+              className="relative h-12 md:h-7 mb-6 overflow-hidden"
               variants={fadeUp}
               custom={0.3}
             >
@@ -306,7 +306,7 @@ function HomeSection() {
       </div>
 
       {/* Stats row — bottom of hero */}
-      <div className="relative z-10 px-8 md:px-12 lg:px-16 pb-12 md:pb-16">
+      <div className="relative z-10 px-8 md:px-24 lg:px-32 pb-12 md:pb-16">
         <div className="flex flex-wrap gap-8 md:gap-10 lg:gap-12">
           {stats.map((stat, i) => (
             <StatItem

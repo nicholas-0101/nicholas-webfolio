@@ -124,7 +124,7 @@ function Navbar() {
               "linear-gradient(to bottom, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.2) 40%, transparent 100%)",
           }}
         />
-        <div className="relative px-8 md:px-12 lg:px-16 flex items-center justify-between pointer-events-auto">
+        <div className="relative px-8 md:px-12 lg:px-32 flex items-center justify-between pointer-events-auto">
           {/* Logo — only visible after scrolling past hero name */}
           <button
             onClick={() => {

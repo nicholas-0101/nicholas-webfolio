@@ -65,7 +65,7 @@ function ContactSection() {
 
   return (
     <MotionSection className="relative bg-[#0a0a0a] pt-16 md:pt-24 lg:pt-28 grain">
-      <div className="px-8 md:px-12 lg:px-16">
+      <div className="px-8 md:px-24 lg:px-32">
         {/* Contact form — centered */}
         <div className="flex justify-center pb-24 md:pb-32">
           <div className="w-full max-w-2xl">

@@ -40,7 +40,7 @@ export default async function ProjectDetail({
       <Navbar />
 
       <div className="relative bg-[#0a0a0a] grain w-full">
-        <div className="pt-32 pb-24 px-8 md:px-12 lg:px-16 max-w-7xl mx-auto">
+        <div className="pt-32 pb-24 px-8 md:px-12 lg:px-32">
           {/* Back Button */}
           <MotionFade className="mb-8">
             <BackButton />
@@ -61,7 +61,7 @@ export default async function ProjectDetail({
 
           {/* Project Thumbnail */}
           <MotionFade delay={0.2}>
-            <div className="relative w-full aspect-video bg-[#111] rounded-3xl overflow-hidden border border-white/5 hover:border-[#FF4D00]/50 transition-all duration-500 mb-16 md:mb-24 shadow-[0_20px_50px_-20px_rgba(255,77,0,0.1)]">
+            <div className="relative w-full max-w-5xl mx-auto aspect-video bg-[#111] rounded-3xl overflow-hidden border border-white/5 hover:border-[#FF4D00]/50 transition-all duration-500 mb-16 md:mb-24 shadow-[0_20px_50px_-20px_rgba(255,77,0,0.1)]">
               <Image
                 src={project.thumbnail}
                 alt={project.title}

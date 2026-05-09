@@ -90,7 +90,7 @@ const allTags = [...new Set(skillCards.flatMap((card) => card.tags))];
 function SkillsSection() {
   return (
     <MotionSection className="relative bg-[#0a0a0a] py-16 md:py-24 lg:py-28 grain" threshold={0.05}>
-      <div className="px-8 md:px-12 lg:px-16">
+      <div className="px-8 md:px-24 lg:px-32">
         {/* Section header — two-column */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 pb-16 md:pb-20">
           <div>

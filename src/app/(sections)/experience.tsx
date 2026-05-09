@@ -11,21 +11,24 @@ import {
 function ExperienceSection() {
   return (
     <MotionSection className="relative bg-[#0a0a0a] py-16 md:py-24 lg:py-28 grain">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10 lg:px-16">
+      <div className="px-8 md:px-24 lg:px-32">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
           {/* Left: Timeline */}
           <div className="flex-[2] flex flex-col relative order-2 lg:order-1">
             {/* Vertical timeline line */}
-            <div className="absolute left-[7px] top-4 bottom-4 w-[2px] bg-white/5 hidden lg:block" />
+            <div className="absolute left-[7px] top-12 bottom-4 w-[2px] bg-white/5 hidden lg:block" />
 
             {experience.map((val, i) => (
               <MotionCard
                 key={val.id}
                 delay={i * 0.2}
-                className="relative pl-0 lg:pl-12 py-8 border-t border-white/5 first:border-t-0"
+                className="relative pl-0 lg:pl-12 py-8"
               >
-                {/* Timeline dot — orange */}
-                <div className="absolute left-0 top-10 w-4 h-4 rounded-full bg-[#FF4D00] border-[3px] border-[#0a0a0a] hidden lg:block" />
+                {/* Timeline dot — orange with pulse */}
+                <div className="absolute left-0 top-10 w-4 h-4 hidden lg:flex items-center justify-center">
+                  <span className="absolute inline-flex h-full w-full rounded-full bg-[#FF4D00] opacity-40 animate-ping" style={{ animationDuration: '2s' }} />
+                  <span className="relative inline-flex w-3 h-3 rounded-full bg-[#FF4D00]" />
+                </div>
 
                 <div className="flex flex-wrap items-center gap-3 mb-4">
                   <span className="inline-block text-[#FF4D00] text-xs tracking-[0.2em] uppercase px-3 py-1 rounded-full border border-[#FF4D00]/20 bg-[#FF4D00]/5">
