@@ -55,7 +55,7 @@ function ExperienceSection() {
                   </div>
                 </div>
 
-                <p className="text-[#b0b0b0] text-sm md:text-base leading-relaxed mb-6 max-w-2xl">
+                <p className="text-[#b0b0b0] text-sm md:text-base leading-relaxed mb-6 max-w-2xl italic">
                   {val.description}
                 </p>
 
