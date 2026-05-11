@@ -20,7 +20,7 @@ const socials = [
     label: "Discord",
   },
   {
-    href: "https://www.instagram.com/nic.verr/",
+    href: "https://www.instagram.com/nicc_archive/",
     icon: "/icons8-instagram.svg",
     alt: "Instagram",
     label: "Instagram",
